@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.ipfs/
+venv/
+.env
+*.log
+cloud_result.json
+

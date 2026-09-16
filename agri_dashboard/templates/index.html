@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriCloud | Robot Dashboard</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7f5;
+            color: #1f2937;
+        }
+
+        header {
+            background: #1f7a4d;
+            color: white;
+            padding: 22px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 25px;
+        }
+
+        header p {
+            margin-top: 5px;
+            opacity: 0.85;
+            font-size: 14px;
+        }
+
+        .status {
+            background: #dff6e8;
+            color: #176b3d;
+            padding: 9px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .welcome {
+            margin-bottom: 25px;
+        }
+
+        .welcome h2 {
+            font-size: 25px;
+            margin-bottom: 7px;
+        }
+
+        .welcome p {
+            color: #6b7280;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 22px;
+            border-radius: 14px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+        }
+
+        .card .icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .card h3 {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+
+        .value {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .panel {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+        }
+
+        .panel h2 {
+            margin-bottom: 20px;
+            font-size: 19px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 13px 0;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .label {
+            color: #6b7280;
+        }
+
+        .cloud {
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        .local {
+            color: #d97706;
+            font-weight: bold;
+        }
+
+        .cid-box {
+            background: #f8fafc;
+            padding: 14px;
+            border-radius: 9px;
+            word-break: break-all;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            background: #1f7a4d;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #17633e;
+        }
+
+        #result {
+            margin-top: 18px;
+            background: #f0fdf4;
+            padding: 15px;
+            border-radius: 9px;
+            white-space: pre-wrap;
+            word-break: break-word;
+            display: none;
+            font-size: 13px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #6b7280;
+            font-size: 13px;
+        }
+
+        @media (max-width: 850px) {
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div>
+        <h1>🌱 AgriCloud</h1>
+        <p>Cloud-Based Agricultural Robot Monitoring</p>
+    </div>
+
+    <div class="status">
+        ● System Online
+    </div>
+</header>
+
+<div class="container">
+
+    <div class="welcome">
+        <h2>Agricultural Robot Dashboard</h2>
+        <p>Monitor robot tasks, agricultural data and cloud processing.</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">🤖</div>
+            <h3>Robot</h3>
+            <div class="value">ONLINE</div>
+        </div>
+
+        <div class="card">
+            <div class="icon">🌱</div>
+            <h3>Soil Moisture</h3>
+            <div class="value">50%</div>
+        </div>
+
+        <div class="card">
+            <div class="icon">☁️</div>
+            <h3>Processing</h3>
+            <div class="value cloud">CLOUD</div>
+        </div>
+
+        <div class="card">
+            <div class="icon">✓</div>
+            <h3>Task Status</h3>
+            <div class="value">COMPLETED</div>
+        </div>
+
+    </div>
+
+    <div class="main-grid">
+
+        <div class="panel">
+
+            <h2>🤖 Robot Information</h2>
+
+            <div class="info-row">
+                <span class="label">Robot ID</span>
+                <strong>AGRI_ROBOT_01</strong>
+            </div>
+
+            <div class="info-row">
+                <span class="label">Field</span>
+                <strong>FIELD_01</strong>
+            </div>
+
+            <div class="info-row">
+                <span class="label">Crop</span>
+                <strong>🌾 Sugarcane</strong>
+            </div>
+
+            <div class="info-row">
+                <span class="label">Connection</span>
+                <strong class="cloud">Connected</strong>
+            </div>
+
+        </div>
+
+        <div class="panel">
+
+            <h2>⚙️ Latest Task</h2>
+
+            <div class="info-row">
+                <span class="label">Task ID</span>
+                <strong>TASK_183</strong>
+            </div>
+
+            <div class="info-row">
+                <span class="label">Task Type</span>
+                <strong>FIELD_DATA_PROCESSING</strong>
+            </div>
+
+            <div class="info-row">
+                <span class="label">CPU Load</span>
+                <strong>85%</strong>
+            </div>
+
+            <div class="info-row">
+                <span class="label">Processing</span>
+                <strong class="cloud">CLOUD</strong>
+            </div>
+
+        </div>
+
+        <div class="panel">
+
+            <h2>🔗 IPFS Storage</h2>
+
+            <p style="color:#6b7280; margin-bottom:10px;">
+                Latest task result stored on IPFS
+            </p>
+
+            <div class="cid-box">
+                Qmch7W5fYrG3yJro7kiqAe7zGssY2owEPBH8RcPXZE5bPp
+            </div>
+
+            <button onclick="retrieveLatest()">
+                Retrieve Latest Result
+            </button>
+
+            <div id="result"></div>
+
+        </div>
+
+        <div class="panel">
+
+            <h2>🔍 Retrieve IPFS Data</h2>
+
+            <p style="color:#6b7280; margin-bottom:15px;">
+                Enter an IPFS CID to retrieve stored agricultural data.
+            </p>
+
+            <input
+                type="text"
+                id="cid"
+                placeholder="Enter IPFS CID"
+            >
+
+            <button onclick="retrieveData()">
+                Retrieve Data
+            </button>
+
+            <div id="customResult"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    AgriCloud • ROS 2 • MQTT • Cloud Processing • IPFS
+</footer>
+
+
+<script>
+
+function retrieveLatest() {
+
+    const cid =
+        "Qmch7W5fYrG3yJro7kiqAe7zGssY2owEPBH8RcPXZE5bPp";
+
+    fetch("/retrieve/" + cid)
+        .then(response => response.json())
+        .then(data => {
+
+            const result =
+                document.getElementById("result");
+
+            result.style.display = "block";
+
+            result.textContent =
+                JSON.stringify(data.data, null, 2);
+
+        })
+        .catch(error => {
+
+            const result =
+                document.getElementById("result");
+
+            result.style.display = "block";
+            result.textContent =
+                "Error retrieving IPFS data.";
+
+        });
+}
+
+
+function retrieveData() {
+
+    const cid =
+        document.getElementById("cid").value.trim();
+
+    const result =
+        document.getElementById("customResult");
+
+    if (!cid) {
+        result.style.display = "block";
+        result.textContent = "Please enter an IPFS CID.";
+        return;
+    }
+
+    result.style.display = "block";
+    result.textContent = "Retrieving data...";
+
+    fetch("/retrieve/" + cid)
+        .then(response => response.json())
+        .then(data => {
+
+            if (data.success) {
+
+                result.textContent =
+                    JSON.stringify(data.data, null, 2);
+
+            } else {
+
+                result.textContent =
+                    "Unable to retrieve this CID.";
+
+            }
+
+        })
+        .catch(error => {
+
+            result.textContent =
+                "Error connecting to backend.";
+
+        });
+}
+
+</script>
+
+</body>
+</html>
